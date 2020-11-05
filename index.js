@@ -3,6 +3,7 @@ const app = express();
 const aws = require("aws-sdk");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ extended: false }));
 
 const dynamoDB = new aws.DynamoDB.DocumentClient({
   region: "us-east-2",
