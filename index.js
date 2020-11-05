@@ -78,7 +78,6 @@ app.post("/update", (req, res) => {
     tskt: tskt,
   };
 
-
   if (ma) {
     return res.render("update", {
       data: lk,
@@ -112,6 +111,28 @@ app.post("/update", (req, res) => {
   dynamoDB.update(params, (err, data) => {
     if (err) throw err;
     res.redirect("/");
+  });
+});
+
+app.post("/addAPI", (req, res) => {
+  const { ten, dvt, gia, tskt } = req.body;
+  let lk = {
+    maLinhKien: Math.ceil(Math.random() * 10000),
+    tenLinhKien: ten,
+    doViTinh: dvt,
+    gia: gia,
+    tskt: tskt,
+  };
+  let params = {
+    TableName: "LinhKiens",
+    Item: lk,
+  };
+  dynamoDB.put(params, (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json({ msg: true });
+    }
   });
 });
 
