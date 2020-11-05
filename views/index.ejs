@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Chu</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <form method="POST" action="/add">
+          <h1 style="text-align: center">Nhập thông tin linh kiện</h1>
+          <input type="text" placeholder="Tên" name="ten" />
+          <input type="text" placeholder="Đơn vị tính" name="dvt" />
+          <input type="number" placeholder="Giá" name="gia" />
+          <input type="text" placeholder="Thông số kỹ thuật" name="tskt" />
+          <button type="submit">Thêm</button>
+        </form>
+      </div>
+      <div>
+        <h1 style="text-align: center">Danh Sách Các Linh Kiện</h1>
+        <table border="1">
+          <tr>
+            <th>STT</th>
+            <th>Mã Linh Kiện</th>
+            <th>Tên Linh Kiện</th>
+            <th>Đơn Vị Tính</th>
+            <th>Giá Linh Kiện</th>
+            <th>Thông Số Kỹ Thuật</th>
+            <th>Hành Động</th>
+          </tr>
+          <%for(let i=0;i< dataLK.length;i++){%>
+          <tr>
+            <td><%=i+1%></td>
+            <td><%=dataLK[i].maLinhKien %></td>
+            <td><%=dataLK[i].tenLinhKien %></td>
+            <td><%=dataLK[i].doViTinh %></td>
+            <td><%=dataLK[i].gia %></td>
+            <td><%=dataLK[i].tskt %></td>
+            <td>
+              <form method="POST" action="/delete">
+                <input
+                  type="hidden"
+                  value="<%=dataLK[i].maLinhKien %>"
+                  name="madelete"
+                />
+                <button type="submit">Xóa</button>
+              </form>
+              <form action="/update" method="POST">
+                <input
+                  type="hidden"
+                  value="<%=dataLK[i].maLinhKien %>"
+                  name="ma"
+                />
+                <input
+                  type="hidden"
+                  value="<%=dataLK[i].tenLinhKien %>"
+                  name="ten"
+                />
+                <input type="hidden" value="<%=dataLK[i].gia %>" name="gia" />
+                <input
+                  type="hidden"
+                  value="<%=dataLK[i].doViTinh %>"
+                  name="dvt"
+                />
+                <input type="hidden" value="<%=dataLK[i].tskt %>" name="tskt" />
+                <button type="submit">Cập Nhật</button>
+              </form>
+            </td>
+          </tr>
+          <%}%>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

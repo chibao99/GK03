@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cap Nhat</title>
+  </head>
+  <body>
+    <div>
+      <form method="POST" action="/update">
+        <input type="text" placeholder="Tên" name="tenup" value="<%=data.ten%>" />
+        <input type="text" placeholder="Đơn vị tính" name="dvtup" value="<%=data.dvt %>" />
+        <input type="number" placeholder="Giá" name="giaup" value="<%=data.gia%>" />
+        <input type="text" placeholder="Thông số kỹ thuật" name="tsktup" value="<%=data.tskt%>" />
+        <input type="hidden" name="maup" value="<%=data.ma%>" />
+        <button type="submit">Cập Nhật</button>
+      </form>
+    </div>
+  </body>
+</html>
